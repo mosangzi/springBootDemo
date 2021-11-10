@@ -1,6 +1,7 @@
 persion:
   name: losy
   age: ${random.int}
+  email: foo@gmail.com
   happy: true
   birth: 2021/11/10
   maps:

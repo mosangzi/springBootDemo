@@ -2,17 +2,21 @@ package com.losy.springbootdemo.pojo;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.constraints.Email;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 @Component
 @ConfigurationProperties(prefix = "persion")
+@Validated
 public class Person {
-
     private String name;
     private Integer age;
+    @Email(message = "邮件格式错误")
+    private String email;
     private Boolean happy;
     private Date birth;
     private Map<String,Object> maps;
@@ -22,9 +26,10 @@ public class Person {
     public Person() {
     }
 
-    public Person(String name, Integer age, Boolean happy, Date birth, Map<String, Object> maps, List<Object> lists, Dog dog) {
+    public Person(String name, Integer age, String email, Boolean happy, Date birth, Map<String, Object> maps, List<Object> lists, Dog dog) {
         this.name = name;
         this.age = age;
+        this.email = email;
         this.happy = happy;
         this.birth = birth;
         this.maps = maps;
@@ -46,6 +51,14 @@ public class Person {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Boolean getHappy() {
@@ -93,6 +106,7 @@ public class Person {
         return "Person{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
+                ", email='" + email + '\'' +
                 ", happy=" + happy +
                 ", birth=" + birth +
                 ", maps=" + maps +
