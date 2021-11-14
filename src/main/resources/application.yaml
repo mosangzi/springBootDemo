@@ -16,3 +16,22 @@ persion:
 dog:
   name: 旺财
   age: 3
+
+spring:
+  profiles:
+    active: dev
+
+---
+server:
+  port: 8081
+spring:
+  config:
+    activate:
+      on-profile: dev
+---
+server:
+  port: 8082
+spring:
+  config:
+    activate:
+      on-profile: test
